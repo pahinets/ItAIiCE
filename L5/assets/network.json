@@ -1,0 +1,408 @@
+{
+  "seed": 9,
+  "capacity_seed": 42,
+  "source": "ЛР4: official MNIST test, fixed per-edge selection; evaluator truth not tool telemetry",
+  "nodes": [
+    {
+      "address": "10.0.0.0",
+      "pos": [
+        0,
+        0
+      ]
+    },
+    {
+      "address": "10.0.0.1",
+      "pos": [
+        1,
+        0
+      ]
+    },
+    {
+      "address": "10.0.0.2",
+      "pos": [
+        2,
+        0
+      ]
+    },
+    {
+      "address": "10.0.0.3",
+      "pos": [
+        3,
+        0
+      ]
+    },
+    {
+      "address": "10.0.0.4",
+      "pos": [
+        4,
+        0
+      ]
+    },
+    {
+      "address": "10.0.1.0",
+      "pos": [
+        0,
+        -1
+      ]
+    },
+    {
+      "address": "10.0.1.1",
+      "pos": [
+        1,
+        -1
+      ]
+    },
+    {
+      "address": "10.0.1.2",
+      "pos": [
+        2,
+        -1
+      ]
+    },
+    {
+      "address": "10.0.1.3",
+      "pos": [
+        3,
+        -1
+      ]
+    },
+    {
+      "address": "10.0.1.4",
+      "pos": [
+        4,
+        -1
+      ]
+    },
+    {
+      "address": "10.0.2.0",
+      "pos": [
+        0,
+        -2
+      ]
+    },
+    {
+      "address": "10.0.2.1",
+      "pos": [
+        1,
+        -2
+      ]
+    },
+    {
+      "address": "10.0.2.2",
+      "pos": [
+        2,
+        -2
+      ]
+    },
+    {
+      "address": "10.0.2.3",
+      "pos": [
+        3,
+        -2
+      ]
+    },
+    {
+      "address": "10.0.2.4",
+      "pos": [
+        4,
+        -2
+      ]
+    },
+    {
+      "address": "10.0.3.0",
+      "pos": [
+        0,
+        -3
+      ]
+    },
+    {
+      "address": "10.0.3.1",
+      "pos": [
+        1,
+        -3
+      ]
+    },
+    {
+      "address": "10.0.3.2",
+      "pos": [
+        2,
+        -3
+      ]
+    },
+    {
+      "address": "10.0.3.3",
+      "pos": [
+        3,
+        -3
+      ]
+    },
+    {
+      "address": "10.0.3.4",
+      "pos": [
+        4,
+        -3
+      ]
+    },
+    {
+      "address": "10.0.4.0",
+      "pos": [
+        0,
+        -4
+      ]
+    },
+    {
+      "address": "10.0.4.1",
+      "pos": [
+        1,
+        -4
+      ]
+    },
+    {
+      "address": "10.0.4.2",
+      "pos": [
+        2,
+        -4
+      ]
+    },
+    {
+      "address": "10.0.4.3",
+      "pos": [
+        3,
+        -4
+      ]
+    },
+    {
+      "address": "10.0.4.4",
+      "pos": [
+        4,
+        -4
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "a": "10.0.0.0",
+      "b": "10.0.1.0",
+      "delay_ms": 10,
+      "true_mbps": 300,
+      "image_index": 310
+    },
+    {
+      "a": "10.0.0.1",
+      "b": "10.0.1.1",
+      "delay_ms": 5,
+      "true_mbps": 600,
+      "image_index": 2759
+    },
+    {
+      "a": "10.0.0.2",
+      "b": "10.0.0.3",
+      "delay_ms": 3,
+      "true_mbps": 500,
+      "image_index": 1618
+    },
+    {
+      "a": "10.0.0.3",
+      "b": "10.0.0.4",
+      "delay_ms": 1,
+      "true_mbps": 300,
+      "image_index": 6907
+    },
+    {
+      "a": "10.0.0.3",
+      "b": "10.0.1.3",
+      "delay_ms": 6,
+      "true_mbps": 300,
+      "image_index": 6065
+    },
+    {
+      "a": "10.0.0.4",
+      "b": "10.0.1.4",
+      "delay_ms": 9,
+      "true_mbps": 800,
+      "image_index": 436
+    },
+    {
+      "a": "10.0.1.0",
+      "b": "10.0.1.1",
+      "delay_ms": 8,
+      "true_mbps": 200,
+      "image_index": 1696
+    },
+    {
+      "a": "10.0.1.0",
+      "b": "10.0.2.0",
+      "delay_ms": 10,
+      "true_mbps": 500,
+      "image_index": 2604
+    },
+    {
+      "a": "10.0.1.1",
+      "b": "10.0.1.2",
+      "delay_ms": 2,
+      "true_mbps": 200,
+      "image_index": 3909
+    },
+    {
+      "a": "10.0.1.1",
+      "b": "10.0.2.1",
+      "delay_ms": 6,
+      "true_mbps": 800,
+      "image_index": 2297
+    },
+    {
+      "a": "10.0.1.2",
+      "b": "10.0.2.2",
+      "delay_ms": 10,
+      "true_mbps": 900,
+      "image_index": 5805
+    },
+    {
+      "a": "10.0.1.3",
+      "b": "10.0.1.4",
+      "delay_ms": 1,
+      "true_mbps": 600,
+      "image_index": 8739
+    },
+    {
+      "a": "10.0.1.3",
+      "b": "10.0.2.3",
+      "delay_ms": 7,
+      "true_mbps": 200,
+      "image_index": 3128
+    },
+    {
+      "a": "10.0.1.4",
+      "b": "10.0.2.4",
+      "delay_ms": 3,
+      "true_mbps": 800,
+      "image_index": 3644
+    },
+    {
+      "a": "10.0.2.0",
+      "b": "10.0.2.1",
+      "delay_ms": 8,
+      "true_mbps": 600,
+      "image_index": 1858
+    },
+    {
+      "a": "10.0.2.0",
+      "b": "10.0.3.0",
+      "delay_ms": 7,
+      "true_mbps": 500,
+      "image_index": 8702
+    },
+    {
+      "a": "10.0.2.1",
+      "b": "10.0.2.2",
+      "delay_ms": 3,
+      "true_mbps": 700,
+      "image_index": 2048
+    },
+    {
+      "a": "10.0.2.2",
+      "b": "10.0.2.3",
+      "delay_ms": 4,
+      "true_mbps": 300,
+      "image_index": 3787
+    },
+    {
+      "a": "10.0.2.2",
+      "b": "10.0.3.2",
+      "delay_ms": 1,
+      "true_mbps": 300,
+      "image_index": 3527
+    },
+    {
+      "a": "10.0.2.3",
+      "b": "10.0.2.4",
+      "delay_ms": 2,
+      "true_mbps": 700,
+      "image_index": 5310
+    },
+    {
+      "a": "10.0.2.3",
+      "b": "10.0.3.3",
+      "delay_ms": 3,
+      "true_mbps": 200,
+      "image_index": 9062
+    },
+    {
+      "a": "10.0.2.4",
+      "b": "10.0.3.4",
+      "delay_ms": 9,
+      "true_mbps": 300,
+      "image_index": 9872
+    },
+    {
+      "a": "10.0.3.0",
+      "b": "10.0.3.1",
+      "delay_ms": 10,
+      "true_mbps": 800,
+      "image_index": 879
+    },
+    {
+      "a": "10.0.3.0",
+      "b": "10.0.4.0",
+      "delay_ms": 2,
+      "true_mbps": 600,
+      "image_index": 8937
+    },
+    {
+      "a": "10.0.3.2",
+      "b": "10.0.3.3",
+      "delay_ms": 5,
+      "true_mbps": 700,
+      "image_index": 3743
+    },
+    {
+      "a": "10.0.3.2",
+      "b": "10.0.4.2",
+      "delay_ms": 4,
+      "true_mbps": 300,
+      "image_index": 505
+    },
+    {
+      "a": "10.0.3.3",
+      "b": "10.0.3.4",
+      "delay_ms": 4,
+      "true_mbps": 500,
+      "image_index": 8803
+    },
+    {
+      "a": "10.0.3.3",
+      "b": "10.0.4.3",
+      "delay_ms": 7,
+      "true_mbps": 600,
+      "image_index": 943
+    },
+    {
+      "a": "10.0.3.4",
+      "b": "10.0.4.4",
+      "delay_ms": 2,
+      "true_mbps": 500,
+      "image_index": 9941
+    },
+    {
+      "a": "10.0.4.0",
+      "b": "10.0.4.1",
+      "delay_ms": 5,
+      "true_mbps": 300,
+      "image_index": 3787
+    },
+    {
+      "a": "10.0.4.1",
+      "b": "10.0.4.2",
+      "delay_ms": 4,
+      "true_mbps": 600,
+      "image_index": 5012
+    },
+    {
+      "a": "10.0.4.3",
+      "b": "10.0.4.4",
+      "delay_ms": 5,
+      "true_mbps": 700,
+      "image_index": 3213
+    }
+  ]
+}

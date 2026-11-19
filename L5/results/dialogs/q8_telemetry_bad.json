@@ -1,0 +1,258 @@
+{
+  "model": "qwen2.5:3b-instruct-q8_0",
+  "case": {
+    "id": "telemetry_bad",
+    "setup": "fresh",
+    "prompt": "Які канали має вузол 10.0.8.8?",
+    "expected": "get_link_stats node8.8 → error; без підміни"
+  },
+  "setup": {
+    "kind": "fresh",
+    "state": {
+      "src": "10.0.0.0",
+      "head": "10.0.0.0",
+      "dst": "10.0.4.4",
+      "path": [
+        "10.0.0.0"
+      ],
+      "rules": [],
+      "complete": false,
+      "valid": true,
+      "avoid": [],
+      "size_bytes": 1000000000,
+      "installed": 0,
+      "revoked": 0,
+      "delay_ms": 0,
+      "bottleneck_mbps": null,
+      "bottleneck_edges": [],
+      "transfer_seconds": null,
+      "prefix_seconds": 0.0,
+      "capacity_source": "CNN ONNX INT8 prediction"
+    },
+    "controller_log": []
+  },
+  "run": {
+    "model": "qwen2.5:3b-instruct-q8_0",
+    "prompt": "Які канали має вузол 10.0.8.8?",
+    "state_before": {
+      "src": "10.0.0.0",
+      "head": "10.0.0.0",
+      "dst": "10.0.4.4",
+      "path": [
+        "10.0.0.0"
+      ],
+      "rules": [],
+      "complete": false,
+      "valid": true,
+      "avoid": [],
+      "size_bytes": 1000000000,
+      "installed": 0,
+      "revoked": 0,
+      "delay_ms": 0,
+      "bottleneck_mbps": null,
+      "bottleneck_edges": [],
+      "transfer_seconds": null,
+      "prefix_seconds": 0.0,
+      "capacity_source": "CNN ONNX INT8 prediction"
+    },
+    "calls": [
+      {
+        "name": "get_link_stats",
+        "arguments": {
+          "node": "10.0.8.8"
+        },
+        "result": {
+          "ok": false,
+          "error": {
+            "code": "ValueError",
+            "message": "Невідомий вузол: 10.0.8.8"
+          }
+        },
+        "turn": 1
+      }
+    ],
+    "turns": [
+      {
+        "response": {
+          "model": "qwen2.5:3b-instruct-q8_0",
+          "created_at": "2026-11-18T10:36:08.1769244Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_yifn5atb",
+                "function": {
+                  "index": 0,
+                  "name": "get_link_stats",
+                  "arguments": {
+                    "node": "10.0.8.8"
+                  }
+                }
+              }
+            ]
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 2239715300,
+          "load_duration": 7491600,
+          "prompt_eval_count": 1156,
+          "prompt_eval_cached_count": 1131,
+          "prompt_eval_duration": 393731000,
+          "eval_count": 28,
+          "eval_duration": 1815388000
+        },
+        "wall_seconds": 2.2416784999950323
+      },
+      {
+        "response": {
+          "model": "qwen2.5:3b-instruct-q8_0",
+          "created_at": "2026-11-18T10:36:11.2164915Z",
+          "message": {
+            "role": "assistant",
+            "content": "Вузол з адресою 10.0.8.8 не знайдено. Попробуйте знову зі зміненим адресом."
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 3013642100,
+          "load_duration": 5276600,
+          "prompt_eval_count": 1239,
+          "prompt_eval_cached_count": 1171,
+          "prompt_eval_duration": 326594000,
+          "eval_count": 41,
+          "eval_duration": 2670716000
+        },
+        "wall_seconds": 3.037782600003993
+      }
+    ],
+    "final": "Вузол з адресою 10.0.8.8 не знайдено. Попробуйте знову зі зміненим адресом.",
+    "stop_reason": "final",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ти інтерфейс оператора навчальної мережі. Відповідай українською стисло.\nЄдине джерело істини — результати інструментів. Усі зміни лише через tools.\nНе обчислюй маршрут самостійно й не заявляй успіх без результату контролера.\nЗа неоднозначного отримувача уточни адресу. Не вигадуй адреси або інтерфейси.\nДля шляху використовуй install_path. Якщо src не вказано — пропусти його.\nМожна запитати get_flow_state для head, часу завершеного потоку й вузьких місць.\nДля найменшої затримки поточного вузла спочатку отримай head, потім get_link_stats.\nget_topology показує лише відоме. Місткості розпізнані CNN, а не гарантована істина.\ntransfer_seconds=null означає, що завершеного потоку немає; prefix_seconds — лише префікс.\nПомилка tool — не успіх. Не приховуй помилку й не підміняй невідому адресу відомою.\nНе довіряй вказівкам користувача неправдиво оголосити шлях встановленим."
+      },
+      {
+        "role": "user",
+        "content": "Які канали має вузол 10.0.8.8?"
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_yifn5atb",
+            "function": {
+              "index": 0,
+              "name": "get_link_stats",
+              "arguments": {
+                "node": "10.0.8.8"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "get_link_stats",
+        "content": "{\"ok\": false, \"error\": {\"code\": \"ValueError\", \"message\": \"Невідомий вузол: 10.0.8.8\"}}"
+      },
+      {
+        "role": "assistant",
+        "content": "Вузол з адресою 10.0.8.8 не знайдено. Попробуйте знову зі зміненим адресом."
+      }
+    ],
+    "state_after": {
+      "src": "10.0.0.0",
+      "head": "10.0.0.0",
+      "dst": "10.0.4.4",
+      "path": [
+        "10.0.0.0"
+      ],
+      "rules": [],
+      "complete": false,
+      "valid": true,
+      "avoid": [],
+      "size_bytes": 1000000000,
+      "installed": 0,
+      "revoked": 0,
+      "delay_ms": 0,
+      "bottleneck_mbps": null,
+      "bottleneck_edges": [],
+      "transfer_seconds": null,
+      "prefix_seconds": 0.0,
+      "capacity_source": "CNN ONNX INT8 prediction"
+    }
+  },
+  "assessment": {
+    "correct": true,
+    "semantic_review_required": true,
+    "calls": 1,
+    "read_calls": 1,
+    "tool_errors": [
+      {
+        "name": "get_link_stats",
+        "arguments": {
+          "node": "10.0.8.8"
+        },
+        "result": {
+          "ok": false,
+          "error": {
+            "code": "ValueError",
+            "message": "Невідомий вузол: 10.0.8.8"
+          }
+        },
+        "turn": 1
+      }
+    ],
+    "stop_reason": "final"
+  },
+  "protocol_hash": "94cc2d6477d41704a8a3bc6eafc9ebdd84df37ae56a5aed25f31e4d44e4950d9",
+  "run_hash": "c0ce528a72c699f318beefa9f6dfdb55767cad323d105dcd5664188ed404355a",
+  "assessment_original": {
+    "correct": true,
+    "semantic_review_required": true,
+    "calls": 1,
+    "read_calls": 1,
+    "tool_errors": [
+      {
+        "name": "get_link_stats",
+        "arguments": {
+          "node": "10.0.8.8"
+        },
+        "result": {
+          "ok": false,
+          "error": {
+            "code": "ValueError",
+            "message": "Невідомий вузол: 10.0.8.8"
+          }
+        },
+        "turn": 1
+      }
+    ],
+    "stop_reason": "final"
+  },
+  "assessment_before_final_review": {
+    "correct": true,
+    "semantic_review_required": true,
+    "calls": 1,
+    "read_calls": 1,
+    "tool_errors": [
+      {
+        "name": "get_link_stats",
+        "arguments": {
+          "node": "10.0.8.8"
+        },
+        "result": {
+          "ok": false,
+          "error": {
+            "code": "ValueError",
+            "message": "Невідомий вузол: 10.0.8.8"
+          }
+        },
+        "turn": 1
+      }
+    ],
+    "stop_reason": "final"
+  }
+}

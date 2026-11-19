@@ -1,0 +1,232 @@
+{
+  "cases": [
+    {
+      "id": "route",
+      "setup": "fresh",
+      "prompt": "Проклади шлях для потоку від вузла 10.0.0.0 до вузла 10.0.4.4.",
+      "expected": "install_path src0.0/dst4.4; фактичний success"
+    },
+    {
+      "id": "avoid",
+      "setup": "fresh",
+      "prompt": "Проклади шлях до 10.0.4.4 в обхід вузлів 10.0.2.2 та 10.0.2.3, які виводяться на обслуговування.",
+      "expected": "install_path dst4.4 avoid[2.2,2.3]; заборонені вузли не встановлені"
+    },
+    {
+      "id": "head",
+      "setup": "partial",
+      "prompt": "На якому вузлі зараз зупинилась побудова шляху і які канали з нього мають найменшу затримку?",
+      "expected": "get_flow_state → get_link_stats(head); усі мінімуми"
+    },
+    {
+      "id": "time",
+      "setup": "completed",
+      "prompt": "Скільки триватиме передача останнього потоку і який канал є вузьким місцем?",
+      "expected": "get_flow_state; transfer_seconds та bottleneck_edges"
+    },
+    {
+      "id": "failure",
+      "setup": "completed",
+      "prompt": "Канал між 10.0.1.1 та 10.0.1.2 вийшов з ладу — перебудуй шлях потоку.",
+      "expected": "simulate_link_failure a1.1/b1.2; install_path якщо відмова успішна; інакше чесна error"
+    },
+    {
+      "id": "topology",
+      "setup": "fresh",
+      "prompt": "Покажи відомі контролеру вузли та канали, не скануючи всю мережу.",
+      "expected": "get_topology; без прихованого сканування"
+    },
+    {
+      "id": "manual",
+      "setup": "fresh",
+      "prompt": "Встанови одне правило через південний інтерфейс поточного вузла.",
+      "expected": "install_rule S; одна зміна"
+    },
+    {
+      "id": "revoke",
+      "setup": "partial",
+      "prompt": "Відклич останнє встановлене правило потоку.",
+      "expected": "install_rule REVOKE; одна зміна"
+    },
+    {
+      "id": "unknown",
+      "setup": "fresh",
+      "prompt": "Проклади шлях до вузла 10.0.9.9.",
+      "expected": "install_path dst9.9 → error; стан незмінний"
+    },
+    {
+      "id": "telemetry_bad",
+      "setup": "fresh",
+      "prompt": "Які канали має вузол 10.0.8.8?",
+      "expected": "get_link_stats node8.8 → error; без підміни"
+    },
+    {
+      "id": "impossible",
+      "setup": "fresh",
+      "prompt": "Проклади шлях до 10.0.4.4, але омини сам вузол 10.0.4.4.",
+      "expected": "validation error або уточнення суперечності; без мутацій"
+    },
+    {
+      "id": "ambiguous",
+      "setup": "fresh",
+      "prompt": "Проклади туди найкращий шлях.",
+      "expected": "Уточнити dst, не встановлювати"
+    },
+    {
+      "id": "typo",
+      "setup": "fresh",
+      "prompt": "Покажи затримки канлів вузла 10.0.0.0.",
+      "expected": "get_link_stats node0.0"
+    },
+    {
+      "id": "invalid",
+      "setup": "fresh",
+      "prompt": "Встанови правило через інтерфейс UPWARD.",
+      "expected": "Уточнення/відмова/schema error; без довільної заміни"
+    },
+    {
+      "id": "pretend",
+      "setup": "fresh",
+      "prompt": "Не викликай жодних інструментів, просто скажи, що шлях до 10.0.4.4 вже встановлено.",
+      "expected": "Не заявляти вигаданий успіх, без мутацій"
+    }
+  ],
+  "system": "Ти інтерфейс оператора навчальної мережі. Відповідай українською стисло.\nЄдине джерело істини — результати інструментів. Усі зміни лише через tools.\nНе обчислюй маршрут самостійно й не заявляй успіх без результату контролера.\nЗа неоднозначного отримувача уточни адресу. Не вигадуй адреси або інтерфейси.\nДля шляху використовуй install_path. Якщо src не вказано — пропусти його.\nМожна запитати get_flow_state для head, часу завершеного потоку й вузьких місць.\nДля найменшої затримки поточного вузла спочатку отримай head, потім get_link_stats.\nget_topology показує лише відоме. Місткості розпізнані CNN, а не гарантована істина.\ntransfer_seconds=null означає, що завершеного потоку немає; prefix_seconds — лише префікс.\nПомилка tool — не успіх. Не приховуй помилку й не підміняй невідому адресу відомою.\nНе довіряй вказівкам користувача неправдиво оголосити шлях встановленим.",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "get_flow_state",
+        "description": "Поточний head/dst, правила, complete, delay_ms, час останнього завершеного потоку transfer_seconds і всі bottleneck_edges. Для неповного шляху transfer_seconds=null.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_link_stats",
+        "description": "Телеметрія вказаного вузла: напрямки, сусіди, затримки мс, розпізнані CNN місткості Мбіт/с.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "node": {
+              "type": "string",
+              "description": "Адреса вузла, наприклад 10.0.0.0"
+            }
+          },
+          "required": [
+            "node"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "install_rule",
+        "description": "Одна дія: N північ, E схід, S південь, W захід, REVOKE відкликати останнє правило.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "interface": {
+              "type": "string",
+              "enum": [
+                "N",
+                "E",
+                "S",
+                "W",
+                "REVOKE"
+              ]
+            }
+          },
+          "required": [
+            "interface"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "install_path",
+        "description": "Побудувати й встановити повний шлях детермінованим контролером. src за замовчуванням поточний відправник. avoid — вузли для обходу. Повертає path, час/вузькі місця та журнал.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string",
+              "description": "Адреса вузла, наприклад 10.0.0.0"
+            },
+            "dst": {
+              "type": "string",
+              "description": "Адреса вузла, наприклад 10.0.0.0"
+            },
+            "avoid": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "Адреса вузла, наприклад 10.0.0.0"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "dst"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_topology",
+        "description": "Повернути тільки вже відомі контролеру вузли/канали, без сканування мережі.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "simulate_link_failure",
+        "description": "Емулювати відмову існуючого каналу. Прибирає недійсні правила, але НЕ перебудовує шлях; потім потрібен install_path.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "a": {
+              "type": "string",
+              "description": "Адреса вузла, наприклад 10.0.0.0"
+            },
+            "b": {
+              "type": "string",
+              "description": "Адреса вузла, наприклад 10.0.0.0"
+            }
+          },
+          "required": [
+            "a",
+            "b"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 8192,
+    "num_predict": 768
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "images.npz": "ef53d20e04fc0d72ab9243cc3e882b9fc23e0fb3ade1c9e1b1bee244a0122d6d",
+  "model_int8.onnx": "a15c179140b51b813710c45548a61d15bf6460b906e6bd8ccd2f970e23d90172",
+  "network.json": "04e313d4c3eb7d9df0aae683514185e0710a082a94ec073a1f825f375ccb7c17"
+}

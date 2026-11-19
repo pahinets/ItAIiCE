@@ -1,0 +1,18 @@
+[
+  {
+    "model": "qwen2.5:3b-instruct-q4_K_M",
+    "total": 15,
+    "structure_correct": 10,
+    "final_correct": 5,
+    "joint_correct": 5,
+    "joint_fraction": 0.3333333333333333
+  },
+  {
+    "model": "qwen2.5:3b-instruct-q8_0",
+    "total": 15,
+    "structure_correct": 10,
+    "final_correct": 8,
+    "joint_correct": 8,
+    "joint_fraction": 0.5333333333333333
+  }
+]

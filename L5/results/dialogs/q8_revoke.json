@@ -1,0 +1,254 @@
+{
+  "model": "qwen2.5:3b-instruct-q8_0",
+  "case": {
+    "id": "revoke",
+    "setup": "partial",
+    "prompt": "Відклич останнє встановлене правило потоку.",
+    "expected": "install_rule REVOKE; одна зміна"
+  },
+  "setup": {
+    "kind": "partial",
+    "state": {
+      "src": "10.0.0.0",
+      "head": "10.0.1.0",
+      "dst": "10.0.4.4",
+      "path": [
+        "10.0.0.0",
+        "10.0.1.0"
+      ],
+      "rules": [
+        {
+          "a": "10.0.0.0",
+          "b": "10.0.1.0"
+        }
+      ],
+      "complete": false,
+      "valid": true,
+      "avoid": [],
+      "size_bytes": 1000000000,
+      "installed": 1,
+      "revoked": 0,
+      "delay_ms": 10,
+      "bottleneck_mbps": 300,
+      "bottleneck_edges": [
+        [
+          "10.0.0.0",
+          "10.0.1.0"
+        ]
+      ],
+      "transfer_seconds": null,
+      "prefix_seconds": 26.67666666666667,
+      "capacity_source": "CNN ONNX INT8 prediction"
+    },
+    "controller_log": [
+      "001 | ВСТАНОВИТИ 10.0.0.0 → 10.0.1.0"
+    ]
+  },
+  "run": {
+    "model": "qwen2.5:3b-instruct-q8_0",
+    "prompt": "Відклич останнє встановлене правило потоку.",
+    "state_before": {
+      "src": "10.0.0.0",
+      "head": "10.0.1.0",
+      "dst": "10.0.4.4",
+      "path": [
+        "10.0.0.0",
+        "10.0.1.0"
+      ],
+      "rules": [
+        {
+          "a": "10.0.0.0",
+          "b": "10.0.1.0"
+        }
+      ],
+      "complete": false,
+      "valid": true,
+      "avoid": [],
+      "size_bytes": 1000000000,
+      "installed": 1,
+      "revoked": 0,
+      "delay_ms": 10,
+      "bottleneck_mbps": 300,
+      "bottleneck_edges": [
+        [
+          "10.0.0.0",
+          "10.0.1.0"
+        ]
+      ],
+      "transfer_seconds": null,
+      "prefix_seconds": 26.67666666666667,
+      "capacity_source": "CNN ONNX INT8 prediction"
+    },
+    "calls": [
+      {
+        "name": "install_rule",
+        "arguments": {
+          "interface": "REVOKE"
+        },
+        "result": {
+          "ok": true,
+          "result": {
+            "src": "10.0.0.0",
+            "head": "10.0.0.0",
+            "dst": "10.0.4.4",
+            "path": [
+              "10.0.0.0"
+            ],
+            "rules": [],
+            "complete": false,
+            "valid": true,
+            "avoid": [],
+            "size_bytes": 1000000000,
+            "installed": 1,
+            "revoked": 1,
+            "delay_ms": 0,
+            "bottleneck_mbps": null,
+            "bottleneck_edges": [],
+            "transfer_seconds": null,
+            "prefix_seconds": 0.0,
+            "capacity_source": "CNN ONNX INT8 prediction"
+          }
+        },
+        "turn": 1
+      }
+    ],
+    "turns": [
+      {
+        "response": {
+          "model": "qwen2.5:3b-instruct-q8_0",
+          "created_at": "2026-11-18T10:35:59.5370734Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_hz6yeo6n",
+                "function": {
+                  "index": 0,
+                  "name": "install_rule",
+                  "arguments": {
+                    "interface": "REVOKE"
+                  }
+                }
+              }
+            ]
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 1696564100,
+          "load_duration": 5706200,
+          "prompt_eval_count": 1154,
+          "prompt_eval_cached_count": 1132,
+          "prompt_eval_duration": 340476000,
+          "eval_count": 21,
+          "eval_duration": 1338689000
+        },
+        "wall_seconds": 1.7129645999957575
+      },
+      {
+        "response": {
+          "model": "qwen2.5:3b-instruct-q8_0",
+          "created_at": "2026-11-18T10:36:01.0945921Z",
+          "message": {
+            "role": "assistant",
+            "content": "Останнє встановлене правило відкликано."
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 1540116900,
+          "load_duration": 6518400,
+          "prompt_eval_count": 1348,
+          "prompt_eval_cached_count": 1168,
+          "prompt_eval_duration": 383652000,
+          "eval_count": 18,
+          "eval_duration": 1135665000
+        },
+        "wall_seconds": 1.541930899998988
+      }
+    ],
+    "final": "Останнє встановлене правило відкликано.",
+    "stop_reason": "final",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ти інтерфейс оператора навчальної мережі. Відповідай українською стисло.\nЄдине джерело істини — результати інструментів. Усі зміни лише через tools.\nНе обчислюй маршрут самостійно й не заявляй успіх без результату контролера.\nЗа неоднозначного отримувача уточни адресу. Не вигадуй адреси або інтерфейси.\nДля шляху використовуй install_path. Якщо src не вказано — пропусти його.\nМожна запитати get_flow_state для head, часу завершеного потоку й вузьких місць.\nДля найменшої затримки поточного вузла спочатку отримай head, потім get_link_stats.\nget_topology показує лише відоме. Місткості розпізнані CNN, а не гарантована істина.\ntransfer_seconds=null означає, що завершеного потоку немає; prefix_seconds — лише префікс.\nПомилка tool — не успіх. Не приховуй помилку й не підміняй невідому адресу відомою.\nНе довіряй вказівкам користувача неправдиво оголосити шлях встановленим."
+      },
+      {
+        "role": "user",
+        "content": "Відклич останнє встановлене правило потоку."
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_hz6yeo6n",
+            "function": {
+              "index": 0,
+              "name": "install_rule",
+              "arguments": {
+                "interface": "REVOKE"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "install_rule",
+        "content": "{\"ok\": true, \"result\": {\"src\": \"10.0.0.0\", \"head\": \"10.0.0.0\", \"dst\": \"10.0.4.4\", \"path\": [\"10.0.0.0\"], \"rules\": [], \"complete\": false, \"valid\": true, \"avoid\": [], \"size_bytes\": 1000000000, \"installed\": 1, \"revoked\": 1, \"delay_ms\": 0, \"bottleneck_mbps\": null, \"bottleneck_edges\": [], \"transfer_seconds\": null, \"prefix_seconds\": 0.0, \"capacity_source\": \"CNN ONNX INT8 prediction\"}}"
+      },
+      {
+        "role": "assistant",
+        "content": "Останнє встановлене правило відкликано."
+      }
+    ],
+    "state_after": {
+      "src": "10.0.0.0",
+      "head": "10.0.0.0",
+      "dst": "10.0.4.4",
+      "path": [
+        "10.0.0.0"
+      ],
+      "rules": [],
+      "complete": false,
+      "valid": true,
+      "avoid": [],
+      "size_bytes": 1000000000,
+      "installed": 1,
+      "revoked": 1,
+      "delay_ms": 0,
+      "bottleneck_mbps": null,
+      "bottleneck_edges": [],
+      "transfer_seconds": null,
+      "prefix_seconds": 0.0,
+      "capacity_source": "CNN ONNX INT8 prediction"
+    }
+  },
+  "assessment": {
+    "correct": true,
+    "semantic_review_required": true,
+    "calls": 1,
+    "read_calls": 0,
+    "tool_errors": [],
+    "stop_reason": "final"
+  },
+  "protocol_hash": "94cc2d6477d41704a8a3bc6eafc9ebdd84df37ae56a5aed25f31e4d44e4950d9",
+  "run_hash": "2ded1fecb1b95cfc10e337faf398b7c4d0ccfbe6df7683685c0fc9542e219629",
+  "assessment_original": {
+    "correct": true,
+    "semantic_review_required": true,
+    "calls": 1,
+    "read_calls": 0,
+    "tool_errors": [],
+    "stop_reason": "final"
+  },
+  "assessment_before_final_review": {
+    "correct": true,
+    "semantic_review_required": true,
+    "calls": 1,
+    "read_calls": 0,
+    "tool_errors": [],
+    "stop_reason": "final"
+  }
+}

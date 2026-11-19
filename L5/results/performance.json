@@ -1,0 +1,536 @@
+{
+  "prompt": "Опиши українською послідовність перевірки роботи мережевого контролера.\nКонтролер працює в навчальній мережі з двадцяти п'яти вузлів. Канали мають\nрізні затримки та пропускні здатності. Вхідний потік має розмір один гігабайт.\nСтан каналів змінюється, тому оператор повинен відрізняти підтверджені\nспостереження від припущень. На початку контролер бачить тільки локальну\nтаблицю та повідомлення сусідів. Згодом знання доповнюються. Рішення про\nправила приймається за фактичними даними, а не лише за природномовним описом.\nПоясни, чому слід окремо перевіряти адресу отримувача, доступність інтерфейсу,\nзаборонені проміжні вузли та факт завершення побудови шляху. Вкажи різницю\nміж часом обробки запиту мовною моделлю та модельованим часом передачі даних.\nЗверни увагу на випадки, коли отримувач невідомий, канал відсутній або\nкористувач просить оминути самого отримувача. Не вигадуй конкретних вимірювань.\nНе стверджуй, що коротший за кількістю вузлів шлях завжди найкращий.\nВідповідь організуй у стислий перелік практичних перевірок. Це текстовий\nзапит без доступу до інструментів, тому не повідомляй про виконані дії.",
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 8192,
+    "num_predict": 256
+  },
+  "runs": [
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "repeat": 1,
+      "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+      "model_bytes": 1929903008,
+      "manifest_total_bytes": 1929912432,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q4_K_M"
+      },
+      "response": {
+        "model": "qwen2.5:3b-instruct-q4_K_M",
+        "created_at": "2026-11-18T10:30:40.8037206Z",
+        "message": {
+          "role": "assistant",
+          "content": "Послідовність перевірки роботи мережевого контролера може звучати так:\n\n1. Перевірка стану каналів: Повернення даних про стан каналів з урахуванням різних затримок та пропускних здатностей.\n\n2. Перевірка локальної таблиці шляхів: Перевірка, чи є таблиця шляхів оновлена та включає всі потрібні шляхи.\n\n3. Перевірка доступності інтерфейсів: Перевірка, чи доступні інтерфейси для обробки запитів, і чи вони працюють коректно.\n\n4. Перевірка заборонених вузлів: Перевірка, чи вузли, заборонені для обробки запитів, не використовуються.\n\n5"
+        },
+        "done": true,
+        "done_reason": "length",
+        "total_duration": 5364683800,
+        "load_duration": 6262100,
+        "prompt_eval_count": 550,
+        "prompt_eval_cached_count": 24,
+        "prompt_eval_duration": 311292000,
+        "eval_count": 256,
+        "eval_duration": 5037684000
+      },
+      "warmup": {
+        "model": "qwen2.5:3b-instruct-q4_K_M",
+        "created_at": "2026-11-18T10:30:34.4156155Z",
+        "message": {
+          "role": "assistant",
+          "content": "Корабель"
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 3638714200,
+        "load_duration": 3423561900,
+        "prompt_eval_count": 42,
+        "prompt_eval_cached_count": 0,
+        "prompt_eval_duration": 117081000,
+        "eval_count": 5,
+        "eval_duration": 93591000
+      },
+      "memory": {
+        "rss_baseline_bytes": 776949760,
+        "gpu_baseline_mib": 3497,
+        "rss_sampled_peak_bytes": 782127104,
+        "gpu_sampled_peak_mib": 3505,
+        "samples": 6,
+        "unloaded_rss_baseline_bytes": 62394368,
+        "unloaded_gpu_baseline_mib": 1202
+      },
+      "resident": {
+        "name": "qwen2.5:3b-instruct-q4_K_M",
+        "model": "qwen2.5:3b-instruct-q4_K_M",
+        "size": 2318758051,
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-11-18T12:35:40.8042616+02:00",
+        "size_vram": 2318758051,
+        "context_length": 8192,
+        "runner": "llamacpp"
+      },
+      "wall_seconds": 5.387020399997709
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "repeat": 2,
+      "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+      "model_bytes": 1929903008,
+      "manifest_total_bytes": 1929912432,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q4_K_M"
+      },
+      "response": {
+        "model": "qwen2.5:3b-instruct-q4_K_M",
+        "created_at": "2026-11-18T10:30:51.975375Z",
+        "message": {
+          "role": "assistant",
+          "content": "Послідовність перевірки роботи мережевого контролера може звучати так:\n\n1. Перевірка стану каналів: Повернення даних про стан каналів з урахуванням різних затримок та пропускних здатностей.\n\n2. Перевірка локальної таблиці шляхів: Перевірка, чи є таблиця шляхів оновлена та включає всі потрібні шляхи.\n\n3. Перевірка доступності інтерфейсів: Перевірка, чи доступні інтерфейси для обробки запитів, і чи вони працюють коректно.\n\n4. Перевірка заборонених вузлів: Перевірка, чи вузли, заборонені для обробки запитів, не використовуються.\n\n5"
+        },
+        "done": true,
+        "done_reason": "length",
+        "total_duration": 5349102600,
+        "load_duration": 6574800,
+        "prompt_eval_count": 550,
+        "prompt_eval_cached_count": 24,
+        "prompt_eval_duration": 292973000,
+        "eval_count": 256,
+        "eval_duration": 5038672000
+      },
+      "warmup": {
+        "model": "qwen2.5:3b-instruct-q4_K_M",
+        "created_at": "2026-11-18T10:30:45.654463Z",
+        "message": {
+          "role": "assistant",
+          "content": "Корабель"
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2609311900,
+        "load_duration": 2405994900,
+        "prompt_eval_count": 42,
+        "prompt_eval_cached_count": 0,
+        "prompt_eval_duration": 100817000,
+        "eval_count": 5,
+        "eval_duration": 97356000
+      },
+      "memory": {
+        "rss_baseline_bytes": 776024064,
+        "gpu_baseline_mib": 3497,
+        "rss_sampled_peak_bytes": 781950976,
+        "gpu_sampled_peak_mib": 3505,
+        "samples": 6,
+        "unloaded_rss_baseline_bytes": 63094784,
+        "unloaded_gpu_baseline_mib": 1202
+      },
+      "resident": {
+        "name": "qwen2.5:3b-instruct-q4_K_M",
+        "model": "qwen2.5:3b-instruct-q4_K_M",
+        "size": 2318758051,
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-11-18T12:35:51.975375+02:00",
+        "size_vram": 2318758051,
+        "context_length": 8192,
+        "runner": "llamacpp"
+      },
+      "wall_seconds": 5.351050400000531
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "repeat": 3,
+      "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+      "model_bytes": 1929903008,
+      "manifest_total_bytes": 1929912432,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q4_K_M"
+      },
+      "response": {
+        "model": "qwen2.5:3b-instruct-q4_K_M",
+        "created_at": "2026-11-18T10:31:02.3254733Z",
+        "message": {
+          "role": "assistant",
+          "content": "Послідовність перевірки роботи мережевого контролера може звучати так:\n\n1. Перевірка стану каналів: Повернення даних про стан каналів з урахуванням різних затримок та пропускних здатностей.\n\n2. Перевірка локальної таблиці шляхів: Перевірка, чи є таблиця шляхів оновлена та включає всі потрібні шляхи.\n\n3. Перевірка доступності інтерфейсів: Перевірка, чи доступні інтерфейси для обробки запитів, і чи вони працюють коректно.\n\n4. Перевірка заборонених вузлів: Перевірка, чи вузли, заборонені для обробки запитів, не використовуються.\n\n5"
+        },
+        "done": true,
+        "done_reason": "length",
+        "total_duration": 4396914000,
+        "load_duration": 6856000,
+        "prompt_eval_count": 550,
+        "prompt_eval_cached_count": 24,
+        "prompt_eval_duration": 285105000,
+        "eval_count": 256,
+        "eval_duration": 4095791000
+      },
+      "warmup": {
+        "model": "qwen2.5:3b-instruct-q4_K_M",
+        "created_at": "2026-11-18T10:30:56.9344759Z",
+        "message": {
+          "role": "assistant",
+          "content": "Корабель"
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2621163700,
+        "load_duration": 2421163800,
+        "prompt_eval_count": 42,
+        "prompt_eval_cached_count": 0,
+        "prompt_eval_duration": 97126000,
+        "eval_count": 5,
+        "eval_duration": 98127000
+      },
+      "memory": {
+        "rss_baseline_bytes": 776503296,
+        "gpu_baseline_mib": 3497,
+        "rss_sampled_peak_bytes": 781336576,
+        "gpu_sampled_peak_mib": 3505,
+        "samples": 6,
+        "unloaded_rss_baseline_bytes": 63008768,
+        "unloaded_gpu_baseline_mib": 1202
+      },
+      "resident": {
+        "name": "qwen2.5:3b-instruct-q4_K_M",
+        "model": "qwen2.5:3b-instruct-q4_K_M",
+        "size": 2318758051,
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-11-18T12:36:02.3254733+02:00",
+        "size_vram": 2318758051,
+        "context_length": 8192,
+        "runner": "llamacpp"
+      },
+      "wall_seconds": 4.468655200005742
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "repeat": 1,
+      "digest": "cd6aa8b25d7af6e11b3d06e0b5f318ab1cd6c9da19813f4bf21a33e1e278ce9a",
+      "model_bytes": 3285476256,
+      "manifest_total_bytes": 3285485678,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q8_0"
+      },
+      "response": {
+        "model": "qwen2.5:3b-instruct-q8_0",
+        "created_at": "2026-11-18T10:31:27.8223717Z",
+        "message": {
+          "role": "assistant",
+          "content": "Послідовність перевірки роботи мережевого контролера може бути виглядатима так:\n\n1. Перевірка стану каналів: Отримати інформацію про стан всіх каналів, що змінюється з часом. Перевірити доступність каналів та їхні зміни.\n\n2. Перевірка доступності інтерфейсів: Перевірити, чи доступний інтерфейс для обробки входу, і чи він працює коректно.\n\n3. Перевірка заборонених проміжних вузлів: Перевірити, чи відсутні заборонені проміжні вузли, що можуть заблокувати шлях до отримувача.\n\n4. Перевірка завершення шляху: Перевірити"
+        },
+        "done": true,
+        "done_reason": "length",
+        "total_duration": 16616689800,
+        "load_duration": 6985600,
+        "prompt_eval_count": 550,
+        "prompt_eval_cached_count": 24,
+        "prompt_eval_duration": 622610000,
+        "eval_count": 256,
+        "eval_duration": 15979404000
+      },
+      "warmup": {
+        "model": "qwen2.5:3b-instruct-q8_0",
+        "created_at": "2026-11-18T10:31:10.4329438Z",
+        "message": {
+          "role": "assistant",
+          "content": "Корабель."
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 5942610100,
+        "load_duration": 5349403000,
+        "prompt_eval_count": 42,
+        "prompt_eval_cached_count": 0,
+        "prompt_eval_duration": 298094000,
+        "eval_count": 6,
+        "eval_duration": 286982000
+      },
+      "memory": {
+        "rss_baseline_bytes": 2197901312,
+        "gpu_baseline_mib": 3464,
+        "rss_sampled_peak_bytes": 2202759168,
+        "gpu_sampled_peak_mib": 3470,
+        "samples": 13,
+        "unloaded_rss_baseline_bytes": 62857216,
+        "unloaded_gpu_baseline_mib": 1170
+      },
+      "resident": {
+        "name": "qwen2.5:3b-instruct-q8_0",
+        "model": "qwen2.5:3b-instruct-q8_0",
+        "size": 4036325538,
+        "digest": "cd6aa8b25d7af6e11b3d06e0b5f318ab1cd6c9da19813f4bf21a33e1e278ce9a",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q8_0"
+        },
+        "expires_at": "2026-11-18T12:36:27.8378139+02:00",
+        "size_vram": 2325385051,
+        "context_length": 8192,
+        "runner": "llamacpp"
+      },
+      "wall_seconds": 16.681544799997937
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "repeat": 2,
+      "digest": "cd6aa8b25d7af6e11b3d06e0b5f318ab1cd6c9da19813f4bf21a33e1e278ce9a",
+      "model_bytes": 3285476256,
+      "manifest_total_bytes": 3285485678,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q8_0"
+      },
+      "response": {
+        "model": "qwen2.5:3b-instruct-q8_0",
+        "created_at": "2026-11-18T10:31:52.9908786Z",
+        "message": {
+          "role": "assistant",
+          "content": "Послідовність перевірки роботи мережевого контролера може бути виглядатима так:\n\n1. Перевірка стану каналів: Отримати інформацію про стан всіх каналів, що змінюється з часом. Перевірити доступність каналів та їхні зміни.\n\n2. Перевірка доступності інтерфейсів: Перевірити, чи доступний інтерфейс для обробки входу, і чи він працює коректно.\n\n3. Перевірка заборонених проміжних вузлів: Перевірити, чи відсутні заборонені проміжні вузли, що можуть заблокувати шлях до отримувача.\n\n4. Перевірка завершення шляху: Перевірити"
+        },
+        "done": true,
+        "done_reason": "length",
+        "total_duration": 16897860100,
+        "load_duration": 6352600,
+        "prompt_eval_count": 550,
+        "prompt_eval_cached_count": 24,
+        "prompt_eval_duration": 610490000,
+        "eval_count": 256,
+        "eval_duration": 16271425000
+      },
+      "warmup": {
+        "model": "qwen2.5:3b-instruct-q8_0",
+        "created_at": "2026-11-18T10:31:35.3810089Z",
+        "message": {
+          "role": "assistant",
+          "content": "Корабель."
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 5940629200,
+        "load_duration": 5331692800,
+        "prompt_eval_count": 42,
+        "prompt_eval_cached_count": 0,
+        "prompt_eval_duration": 293933000,
+        "eval_count": 6,
+        "eval_duration": 308185000
+      },
+      "memory": {
+        "rss_baseline_bytes": 2197610496,
+        "gpu_baseline_mib": 3466,
+        "rss_sampled_peak_bytes": 2203148288,
+        "gpu_sampled_peak_mib": 3472,
+        "samples": 13,
+        "unloaded_rss_baseline_bytes": 2202759168,
+        "unloaded_gpu_baseline_mib": 1172
+      },
+      "resident": {
+        "name": "qwen2.5:3b-instruct-q8_0",
+        "model": "qwen2.5:3b-instruct-q8_0",
+        "size": 4036325538,
+        "digest": "cd6aa8b25d7af6e11b3d06e0b5f318ab1cd6c9da19813f4bf21a33e1e278ce9a",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q8_0"
+        },
+        "expires_at": "2026-11-18T12:36:53.0048304+02:00",
+        "size_vram": 2325385051,
+        "context_length": 8192,
+        "runner": "llamacpp"
+      },
+      "wall_seconds": 16.959061800007476
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "repeat": 3,
+      "digest": "cd6aa8b25d7af6e11b3d06e0b5f318ab1cd6c9da19813f4bf21a33e1e278ce9a",
+      "model_bytes": 3285476256,
+      "manifest_total_bytes": 3285485678,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q8_0"
+      },
+      "response": {
+        "model": "qwen2.5:3b-instruct-q8_0",
+        "created_at": "2026-11-18T10:32:18.0462615Z",
+        "message": {
+          "role": "assistant",
+          "content": "Послідовність перевірки роботи мережевого контролера може бути виглядатима так:\n\n1. Перевірка стану каналів: Отримати інформацію про стан всіх каналів, що змінюється з часом. Перевірити доступність каналів та їхні зміни.\n\n2. Перевірка доступності інтерфейсів: Перевірити, чи доступний інтерфейс для обробки входу, і чи він працює коректно.\n\n3. Перевірка заборонених проміжних вузлів: Перевірити, чи відсутні заборонені проміжні вузли, що можуть заблокувати шлях до отримувача.\n\n4. Перевірка завершення шляху: Перевірити"
+        },
+        "done": true,
+        "done_reason": "length",
+        "total_duration": 16984377000,
+        "load_duration": 6422100,
+        "prompt_eval_count": 550,
+        "prompt_eval_cached_count": 24,
+        "prompt_eval_duration": 587590000,
+        "eval_count": 256,
+        "eval_duration": 16382060000
+      },
+      "warmup": {
+        "model": "qwen2.5:3b-instruct-q8_0",
+        "created_at": "2026-11-18T10:32:00.427759Z",
+        "message": {
+          "role": "assistant",
+          "content": "Корабель."
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 5726154400,
+        "load_duration": 5112785900,
+        "prompt_eval_count": 42,
+        "prompt_eval_cached_count": 0,
+        "prompt_eval_duration": 303454000,
+        "eval_count": 6,
+        "eval_duration": 300923000
+      },
+      "memory": {
+        "rss_baseline_bytes": 2197983232,
+        "gpu_baseline_mib": 3466,
+        "rss_sampled_peak_bytes": 2203492352,
+        "gpu_sampled_peak_mib": 3472,
+        "samples": 13,
+        "unloaded_rss_baseline_bytes": 63156224,
+        "unloaded_gpu_baseline_mib": 1172
+      },
+      "resident": {
+        "name": "qwen2.5:3b-instruct-q8_0",
+        "model": "qwen2.5:3b-instruct-q8_0",
+        "size": 4036325538,
+        "digest": "cd6aa8b25d7af6e11b3d06e0b5f318ab1cd6c9da19813f4bf21a33e1e278ce9a",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q8_0"
+        },
+        "expires_at": "2026-11-18T12:37:18.0462615+02:00",
+        "size_vram": 2325385051,
+        "context_length": 8192,
+        "runner": "llamacpp"
+      },
+      "wall_seconds": 17.03638159998809
+    }
+  ],
+  "summary": [
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "repeats": 3,
+      "model_gb": 1.929903008,
+      "input_tps_mean": 1776.6844793476084,
+      "input_tps_std": 64.72660409335589,
+      "output_tps_mean": 54.709076570260535,
+      "output_tps_std": 5.511271430223736,
+      "rss_sampled_peak_gb": 0.782127104,
+      "gpu_device_sampled_peak_mib": 3505,
+      "resident_allocation_gb": 2.318758051,
+      "resident_vram_gb": 2.318758051
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "repeats": 3,
+      "model_gb": 3.285476256,
+      "input_tps_mean": 867.2052072226178,
+      "input_tps_std": 20.934089948429264,
+      "output_tps_mean": 15.793525185582375,
+      "output_tps_std": 0.16633760271109968,
+      "rss_sampled_peak_gb": 2.203492352,
+      "gpu_device_sampled_peak_mib": 3472,
+      "resident_allocation_gb": 4.036325538,
+      "resident_vram_gb": 2.325385051
+    }
+  ],
+  "hardware": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "cpu": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+    "logical_cpus": 12,
+    "ram_bytes": 16487870464,
+    "memory_method": "RSS sum executable paths containing Ollama (server + llama-server runner); NVIDIA total device usage sampled, NOT exact model VRAM",
+    "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU, 4096 MiB, 617.42",
+    "ollama": {
+      "version": "0.40.16"
+    }
+  }
+}

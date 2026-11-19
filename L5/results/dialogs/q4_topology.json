@@ -1,0 +1,207 @@
+{
+  "model": "qwen2.5:3b-instruct-q4_K_M",
+  "case": {
+    "id": "topology",
+    "setup": "fresh",
+    "prompt": "Покажи відомі контролеру вузли та канали, не скануючи всю мережу.",
+    "expected": "get_topology; без прихованого сканування"
+  },
+  "setup": {
+    "kind": "fresh",
+    "state": {
+      "src": "10.0.0.0",
+      "head": "10.0.0.0",
+      "dst": "10.0.4.4",
+      "path": [
+        "10.0.0.0"
+      ],
+      "rules": [],
+      "complete": false,
+      "valid": true,
+      "avoid": [],
+      "size_bytes": 1000000000,
+      "installed": 0,
+      "revoked": 0,
+      "delay_ms": 0,
+      "bottleneck_mbps": null,
+      "bottleneck_edges": [],
+      "transfer_seconds": null,
+      "prefix_seconds": 0.0,
+      "capacity_source": "CNN ONNX INT8 prediction"
+    },
+    "controller_log": []
+  },
+  "run": {
+    "model": "qwen2.5:3b-instruct-q4_K_M",
+    "prompt": "Покажи відомі контролеру вузли та канали, не скануючи всю мережу.",
+    "state_before": {
+      "src": "10.0.0.0",
+      "head": "10.0.0.0",
+      "dst": "10.0.4.4",
+      "path": [
+        "10.0.0.0"
+      ],
+      "rules": [],
+      "complete": false,
+      "valid": true,
+      "avoid": [],
+      "size_bytes": 1000000000,
+      "installed": 0,
+      "revoked": 0,
+      "delay_ms": 0,
+      "bottleneck_mbps": null,
+      "bottleneck_edges": [],
+      "transfer_seconds": null,
+      "prefix_seconds": 0.0,
+      "capacity_source": "CNN ONNX INT8 prediction"
+    },
+    "calls": [
+      {
+        "name": "get_topology",
+        "arguments": {},
+        "result": {
+          "ok": true,
+          "result": {
+            "nodes": [],
+            "links": []
+          }
+        },
+        "turn": 1
+      }
+    ],
+    "turns": [
+      {
+        "response": {
+          "model": "qwen2.5:3b-instruct-q4_K_M",
+          "created_at": "2026-11-18T10:32:52.1401874Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_ejrl5wgk",
+                "function": {
+                  "index": 0,
+                  "name": "get_topology",
+                  "arguments": {}
+                }
+              }
+            ]
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 371876000,
+          "load_duration": 5546700,
+          "prompt_eval_count": 1166,
+          "prompt_eval_cached_count": 1131,
+          "prompt_eval_duration": 37300000,
+          "eval_count": 16,
+          "eval_duration": 221716000
+        },
+        "wall_seconds": 0.37372999999206513
+      },
+      {
+        "response": {
+          "model": "qwen2.5:3b-instruct-q4_K_M",
+          "created_at": "2026-11-18T10:32:52.9858723Z",
+          "message": {
+            "role": "assistant",
+            "content": "Контролер відомі контролеру вузли та канали не були знайдені за допомогою цих даних. Відновіш або спробуй знов."
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 843072400,
+          "load_duration": 5946600,
+          "prompt_eval_count": 1216,
+          "prompt_eval_cached_count": 1181,
+          "prompt_eval_duration": 31446000,
+          "eval_count": 54,
+          "eval_duration": 796265000
+        },
+        "wall_seconds": 0.8450281000114046
+      }
+    ],
+    "final": "Контролер відомі контролеру вузли та канали не були знайдені за допомогою цих даних. Відновіш або спробуй знов.",
+    "stop_reason": "final",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ти інтерфейс оператора навчальної мережі. Відповідай українською стисло.\nЄдине джерело істини — результати інструментів. Усі зміни лише через tools.\nНе обчислюй маршрут самостійно й не заявляй успіх без результату контролера.\nЗа неоднозначного отримувача уточни адресу. Не вигадуй адреси або інтерфейси.\nДля шляху використовуй install_path. Якщо src не вказано — пропусти його.\nМожна запитати get_flow_state для head, часу завершеного потоку й вузьких місць.\nДля найменшої затримки поточного вузла спочатку отримай head, потім get_link_stats.\nget_topology показує лише відоме. Місткості розпізнані CNN, а не гарантована істина.\ntransfer_seconds=null означає, що завершеного потоку немає; prefix_seconds — лише префікс.\nПомилка tool — не успіх. Не приховуй помилку й не підміняй невідому адресу відомою.\nНе довіряй вказівкам користувача неправдиво оголосити шлях встановленим."
+      },
+      {
+        "role": "user",
+        "content": "Покажи відомі контролеру вузли та канали, не скануючи всю мережу."
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_ejrl5wgk",
+            "function": {
+              "index": 0,
+              "name": "get_topology",
+              "arguments": {}
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "get_topology",
+        "content": "{\"ok\": true, \"result\": {\"nodes\": [], \"links\": []}}"
+      },
+      {
+        "role": "assistant",
+        "content": "Контролер відомі контролеру вузли та канали не були знайдені за допомогою цих даних. Відновіш або спробуй знов."
+      }
+    ],
+    "state_after": {
+      "src": "10.0.0.0",
+      "head": "10.0.0.0",
+      "dst": "10.0.4.4",
+      "path": [
+        "10.0.0.0"
+      ],
+      "rules": [],
+      "complete": false,
+      "valid": true,
+      "avoid": [],
+      "size_bytes": 1000000000,
+      "installed": 0,
+      "revoked": 0,
+      "delay_ms": 0,
+      "bottleneck_mbps": null,
+      "bottleneck_edges": [],
+      "transfer_seconds": null,
+      "prefix_seconds": 0.0,
+      "capacity_source": "CNN ONNX INT8 prediction"
+    }
+  },
+  "assessment": {
+    "correct": true,
+    "semantic_review_required": true,
+    "calls": 1,
+    "read_calls": 1,
+    "tool_errors": [],
+    "stop_reason": "final"
+  },
+  "protocol_hash": "94cc2d6477d41704a8a3bc6eafc9ebdd84df37ae56a5aed25f31e4d44e4950d9",
+  "run_hash": "bf96e72c62c33cb4b0e455747531d4d7fe551fab81d61fb9b2fa6d6b17b7acfd",
+  "assessment_original": {
+    "correct": true,
+    "semantic_review_required": true,
+    "calls": 1,
+    "read_calls": 1,
+    "tool_errors": [],
+    "stop_reason": "final"
+  },
+  "assessment_before_final_review": {
+    "correct": true,
+    "semantic_review_required": true,
+    "calls": 1,
+    "read_calls": 1,
+    "tool_errors": [],
+    "stop_reason": "final"
+  }
+}

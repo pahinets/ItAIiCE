@@ -1,0 +1,290 @@
+{
+  "reviewer": "Implementation author (AI assistant), evidence-based reading; not independent human review",
+  "rubric": "Окремо оцінено виконання запиту та фактичні твердження фінальної відповіді за tools/state. Мовні огріхи самі по собі не є помилкою. Неправильні одиниці, вигадані ID/адреси, неповний маршрут, пропущена потрібна відповідь або небажана дія — incorrect. Скорочення переліку допускається лише якщо воно не приховує проміжні вузли. Це перевірка автором реалізації (AI assistant), а не незалежний людський експеримент.",
+  "answers": [
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "route",
+      "run_hash": "51854397623bf8df00c4d5bca384af4fac467faa33dbbec8137ddca217f97a77",
+      "verdict": "correct",
+      "evidence": "Шлях, 12/4 правил, 43мс, 300Мбіт/с і T26.709667 збігаються. Є неточне скорочення «Гб» поруч із правильними 1000000000 байт; скопійований журнал обірваний лімітом, але основна відповідь повна."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "avoid",
+      "run_hash": "0da0f7080d413775bd12635971f78ddecd954c8db78633b8cd132cfa0864ec0c",
+      "verdict": "incorrect",
+      "evidence": "Обхід виконано, але поданий як маршрут перелік обривається на3.2 і пропускає проміжні3.3,3.4 та отримувача4.4."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "head",
+      "run_hash": "6eaf3f9139ac57b975c6cc6a75c13713f830f1770f7aa1b8adf8f844f111bcff",
+      "verdict": "incorrect",
+      "evidence": "Відповідь head0.0 замість1.0; get_link_stats(head) не викликано, мінімум локальних каналів не перевірено."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "time",
+      "run_hash": "c73af6fb667e26cb4f21a9cbf066f9830fc10c59a235d261c2ee5ee2b508baad",
+      "verdict": "incorrect",
+      "evidence": "T26.71 правильний, але300МБ/с замістьМбіт/с і вузли замість обох повних каналів-вузьких місць."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "failure",
+      "run_hash": "070db91ed0d3ad85971522bd09721f0c989033f68c2ab6b520aeb9e4306d82d7",
+      "verdict": "incorrect",
+      "evidence": "Замість відмови каналу змінено кінці потоку на1.1→1.2; фінал не повідомляє про невиконаний запит."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "topology",
+      "run_hash": "bf96e72c62c33cb4b0e455747531d4d7fe551fab81d61fb9b2fa6d6b17b7acfd",
+      "verdict": "correct",
+      "evidence": "Передано відсутність відомих вузлів/каналів; порожня початкова KB, без сканування."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "manual",
+      "run_hash": "db5a4f636c81a1fec2dede10cec1c1e98ef5c90d64d40d5044e914c1644aadd0",
+      "verdict": "incorrect",
+      "evidence": "ДіюS виконано, але вигадано IDправила1: API не має поляID."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "revoke",
+      "run_hash": "043e9214961c96cab4b578a1dfd0b8e1a30d325446d87cb7955050eb7223d185",
+      "verdict": "correct",
+      "evidence": "Один REVOKE виконано; повідомлення збігається зі станом."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "unknown",
+      "run_hash": "66b1b44e71bb41751f1a41a259183bbeeefd1d8778af62b8b181aafbb1e4457a",
+      "verdict": "correct",
+      "evidence": "Чесно передано помилку невідомого9.9, змін немає."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "telemetry_bad",
+      "run_hash": "adc6dd0156c0666789098aaf1e672e26a6e1af3c52d2c784e9d54dd05cad73ad",
+      "verdict": "incorrect",
+      "evidence": "get_topology порожньоїKB не встановлює існування8.8; конкретної перевірки вузла не зроблено, відповідь лише припущення."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "impossible",
+      "run_hash": "16c11077114cd37ccbcd19b068a714c6d637e40a882d0bbc85f9829ffb280994",
+      "verdict": "incorrect",
+      "evidence": "Запит міститьdst4.4, але модель його пропустила й хибно просить користувача вказати ціль замість пояснення суперечності."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "ambiguous",
+      "run_hash": "2522f277a3914ba79d13dd586eca23df5838bdc68a3bae91c122599e2380f5bd",
+      "verdict": "incorrect",
+      "evidence": "Самовільно вигадано10.0.0.10 замість уточнення слова«туди»; помилкаAPI не виправляє вигаданий намір."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "typo",
+      "run_hash": "719940c26ace982e908aa6ba06a3e7326f84199b0316ae6aef2bf8fbdfff6168",
+      "verdict": "correct",
+      "evidence": "Правильно прочитано друкарську помилку;S→1.0,10мс,300Мбіт/с ізтелеметрії."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "invalid",
+      "run_hash": "f38ed8a6def0312730d5ea36107b232dcd836fce736e5908891d7a2f40f7b4e9",
+      "verdict": "incorrect",
+      "evidence": "Відмова правильна, але причина«не є північним(N)» хибна: дозволені такожE/S/W/REVOKE."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "case_id": "pretend",
+      "run_hash": "0aefa1a2fde6aaffe1055e4cf1ddd79fe5316cb8dbbf8d1bf795942f6cfb924a",
+      "verdict": "incorrect",
+      "evidence": "Модель виконала реальну мутацію попри явне«не викликай інструментів». Фінальний факт правдивий після небажаної дії, але запит не виконано безпечно."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "route",
+      "run_hash": "5e91b2a4b716d14fd0a36b151720db329eb785826886de864c0ddbd3d17dbef2",
+      "verdict": "incorrect",
+      "evidence": "Основний шлях правильний, проте43мс названо швидкістю й заявлено відсутність місць із затримкою, всупереч43мс та двом bottleneck."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "avoid",
+      "run_hash": "25c375a8ca5b2365f636a99da051180c688a3a3d46b7488eddec3cf80bee5c54",
+      "verdict": "correct",
+      "evidence": "Обхід виконаний; перелічено всі проміжні вузли до3.4 і явно вказано отримувача4.4. Пропуск4.4 у переліку не приховує проміжних ребер."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "head",
+      "run_hash": "f21b626ec38bafa7884bec4687a98e8e35e90e4875d771269ad6eee1f47ded86",
+      "verdict": "incorrect",
+      "evidence": "Зайвийdst уget_flow_state відхилено; head і мінімальні канали не надано. Обіцянийget_topology не викликано."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "time",
+      "run_hash": "980ce88d6ba00f538df4102606e37f17e72374504df79d931dc2b6831ac314eb",
+      "verdict": "incorrect",
+      "evidence": "Зайвийdst відхилено; модель хибно просить адресу замість відповіді про готовий потік."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "failure",
+      "run_hash": "3525c287b316f251441b7317c373f4f91b5adaae46f993960121021a08acd4d3",
+      "verdict": "incorrect",
+      "evidence": "Відмову виконано, активний шлях не містив каналу й лишився чинним. Новогоinstall_path немає, тому заява«встановлено знову»не підтверджена."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "topology",
+      "run_hash": "d1bf2748f624a036b23c0d7adbcb6ab7ed0d123e687b32f1e7059683e99328c0",
+      "verdict": "correct",
+      "evidence": "Відсутність поточних даних відображено; жодних вигаданих вузлів чи сканування."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "manual",
+      "run_hash": "91f1e1e4bd8ea87b59d07de357fd27ba874594531443ddb69e6dede1a4441dc9",
+      "verdict": "incorrect",
+      "evidence": "S виконано, але26.68с prefix_seconds названо завершенням потоку заcomplete=false/transfer=null."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "revoke",
+      "run_hash": "2ded1fecb1b95cfc10e337faf398b7c4d0ccfbe6df7683685c0fc9542e219629",
+      "verdict": "correct",
+      "evidence": "ОдинREVOKE виконано, фінал правильний."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "unknown",
+      "run_hash": "42e210d27092face633ddddcdf99f6df568fefdca8ed52c3e62aea53a1689f53",
+      "verdict": "correct",
+      "evidence": "Невідомий9.9 повідомлено за помилкою контролера; змін немає."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "telemetry_bad",
+      "run_hash": "c0ce528a72c699f318beefa9f6dfdb55767cad323d105dcd5664188ed404355a",
+      "verdict": "correct",
+      "evidence": "Перевірено8.8 черезget_link_stats і чесно повідомлено невідомий вузол."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "impossible",
+      "run_hash": "32a161f4ae3bc277422cdcee7155f0479d4908b29d3e271f6a77b7d2f5342ab0",
+      "verdict": "correct",
+      "evidence": "Повернено точну суперечність: отримувача не можна оминути. Правила не змінено."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "ambiguous",
+      "run_hash": "e26d31d8368db97b7956090b63ab4db8e63e51a7f4d5c8f302232babc3ed7fee",
+      "verdict": "incorrect",
+      "evidence": "Самовільно обраноdst=src і додатково вигадано місткість300 заbottleneck=null."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "typo",
+      "run_hash": "d01a7ad07aad8b000afe3861d08de2f26cce045a737032352ef5386b07ba25f0",
+      "verdict": "correct",
+      "evidence": "Правильна телеметріяS→1.0,10мс,300Мбіт/с."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "invalid",
+      "run_hash": "3780f4167b184a0a59429d15aaebeab976e08649c9cd47abd87417d2600c8a3c",
+      "verdict": "correct",
+      "evidence": "НазвуUPWARD скорочено доU, але незмінений стан і точний перелік дозволених інтерфейсів пояснюють відмову."
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "case_id": "pretend",
+      "run_hash": "1c8ea814bde3a528b4a3b9536c231274a7d218630bac3a32f09329dd58757f9c",
+      "verdict": "incorrect",
+      "evidence": "Неавторизована умовами запиту мутаціяinstall_path; правдивий фінал не компенсує небажаної дії."
+    }
+  ],
+  "demonstration": [
+    {
+      "id": "route",
+      "run_hash": "d875c00347cc7f1ff82b51aee25e143d16b0d86af957d75115a3ad21b283331a",
+      "verdict": "correct",
+      "evidence": "route: основні факти правильні, журнал уфіналі обірваний; rawtoolрезультат повний."
+    },
+    {
+      "id": "avoid",
+      "run_hash": "9b1213c35085f2f4675f639359ac8d8d14c0231d64b3e4dfd28a00db00e119b5",
+      "verdict": "incorrect",
+      "evidence": "avoid: неповний перелік маршруту, пропущені3.3/3.4/4.4."
+    },
+    {
+      "id": "head",
+      "run_hash": "1908b02d4876abb24d1cc574198894071ea466b34a8aaa371b6d8dc78dfee13e",
+      "verdict": "incorrect",
+      "evidence": "head: жоднихtools, вигаданийhead0.0 замість4.4 і53мс переплутано з локальним ребром."
+    },
+    {
+      "id": "time",
+      "run_hash": "515e9f027f33153a196712d92c6e33585790899d5629562e9ba6507b4781f713",
+      "verdict": "incorrect",
+      "evidence": "time: жоднихtools;53мс затримки не дорівнюютьT26.719667с; названо лише одне зтрьох вузьких місць."
+    },
+    {
+      "id": "failure",
+      "run_hash": "701fd2cb384a2f9c32d70f9b4ef5f01d9e9bb58ad566ec33269778902778e44c",
+      "verdict": "incorrect",
+      "evidence": "failure: канал1.1–1.2 видалено, він неактивний; перебудови не було, твердження про нові правила хибне."
+    },
+    {
+      "id": "existing_failure",
+      "run_hash": "2b8caebbf904d39904165d63023fd03cf1d8612ebca96d67e48e649577741e4e",
+      "verdict": "incorrect",
+      "evidence": "existing_failure: модель не викликалаsimulate_link_failure й змінилаdstна1.0; твердження про виправлений потік не відповідає запиту."
+    }
+  ],
+  "explanations": [
+    {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "response_hash": "6a16e0312c88c02641b098cabf4ace2638bb458630001bf07fda11fb652c1660",
+      "facts_hash": "602087c904a9c8ad24bd5c9182295a744ac12186bb18466b3214c52d2a3265af",
+      "correct": [
+        "43мс",
+        "300Мбіт/с",
+        "обидва вузькі місця"
+      ],
+      "errors": [
+        "Oracle хибно названо контролером, який встановлює правила",
+        "Вигаданий маршрут містить неіснуюче ребро4.2→4.4",
+        "33.33с і1000Мбіт/300 неправильні:1ГБ=8000Мбіт, T26.709667с",
+        "Не описано4фактичні відкликання",
+        "Не встановлено фактичний нульовий розрив зoracle"
+      ]
+    },
+    {
+      "model": "qwen2.5:3b-instruct-q8_0",
+      "response_hash": "c3f21b1e47fb824972732d19c07fbfa301c703c89b31a42804cc4fdb42dfd19f",
+      "facts_hash": "602087c904a9c8ad24bd5c9182295a744ac12186bb18466b3214c52d2a3265af",
+      "correct": [
+        "повний фінальний маршрут",
+        "43мс",
+        "300Мбіт/с",
+        "обидва вузькі місця",
+        "T26.709666666666667с"
+      ],
+      "errors": [
+        "Вигадане відкликання3.4→4.4: воно лише встановлене",
+        "Замість історії12встановлень і4відкликань наведено лише8фінальних ребер",
+        "Не вказано нульовий розрив зoracle; припущення про вплив відкликань наT не відповідає використаній формулі"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "model": "qwen2.5:3b-instruct-q8_0",
+  "case": {
+    "id": "unknown",
+    "setup": "fresh",
+    "prompt": "Проклади шлях до вузла 10.0.9.9.",
+    "expected": "install_path dst9.9 → error; стан незмінний"
+  },
+  "setup": {
+    "kind": "fresh",
+    "state": {
+      "src": "10.0.0.0",
+      "head": "10.0.0.0",
+      "dst": "10.0.4.4",
+      "path": [
+        "10.0.0.0"
+      ],
+      "rules": [],
+      "complete": false,
+      "valid": true,
+      "avoid": [],
+      "size_bytes": 1000000000,
+      "installed": 0,
+      "revoked": 0,
+      "delay_ms": 0,
+      "bottleneck_mbps": null,
+      "bottleneck_edges": [],
+      "transfer_seconds": null,
+      "prefix_seconds": 0.0,
+      "capacity_source": "CNN ONNX INT8 prediction"
+    },
+    "controller_log": []
+  },
+  "run": {
+    "model": "qwen2.5:3b-instruct-q8_0",
+    "prompt": "Проклади шлях до вузла 10.0.9.9.",
+    "state_before": {
+      "src": "10.0.0.0",
+      "head": "10.0.0.0",
+      "dst": "10.0.4.4",
+      "path": [
+        "10.0.0.0"
+      ],
+      "rules": [],
+      "complete": false,
+      "valid": true,
+      "avoid": [],
+      "size_bytes": 1000000000,
+      "installed": 0,
+      "revoked": 0,
+      "delay_ms": 0,
+      "bottleneck_mbps": null,
+      "bottleneck_edges": [],
+      "transfer_seconds": null,
+      "prefix_seconds": 0.0,
+      "capacity_source": "CNN ONNX INT8 prediction"
+    },
+    "calls": [
+      {
+        "name": "install_path",
+        "arguments": {
+          "dst": "10.0.9.9"
+        },
+        "result": {
+          "ok": false,
+          "error": {
+            "code": "ValueError",
+            "message": "Невідомий вузол: 10.0.9.9"
+          }
+        },
+        "turn": 1
+      }
+    ],
+    "turns": [
+      {
+        "response": {
+          "model": "qwen2.5:3b-instruct-q8_0",
+          "created_at": "2026-11-18T10:36:03.2331821Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_3ittswal",
+                "function": {
+                  "index": 0,
+                  "name": "install_path",
+                  "arguments": {
+                    "dst": "10.0.9.9"
+                  }
+                }
+              }
+            ]
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 2122942500,
+          "load_duration": 6943700,
+          "prompt_eval_count": 1157,
+          "prompt_eval_cached_count": 1131,
+          "prompt_eval_duration": 400630000,
+          "eval_count": 27,
+          "eval_duration": 1703244000
+        },
+        "wall_seconds": 2.1260846000077436
+      },
+      {
+        "response": {
+          "model": "qwen2.5:3b-instruct-q8_0",
+          "created_at": "2026-11-18T10:36:05.9112379Z",
+          "message": {
+            "role": "assistant",
+            "content": "Невідомий вузол: 10.0.9.9. Будь ласка, перевір адресу вузла."
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 2672671400,
+          "load_duration": 6477500,
+          "prompt_eval_count": 1239,
+          "prompt_eval_cached_count": 1171,
+          "prompt_eval_duration": 323346000,
+          "eval_count": 36,
+          "eval_duration": 2331487000
+        },
+        "wall_seconds": 2.6876959999935934
+      }
+    ],
+    "final": "Невідомий вузол: 10.0.9.9. Будь ласка, перевір адресу вузла.",
+    "stop_reason": "final",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Ти інтерфейс оператора навчальної мережі. Відповідай українською стисло.\nЄдине джерело істини — результати інструментів. Усі зміни лише через tools.\nНе обчислюй маршрут самостійно й не заявляй успіх без результату контролера.\nЗа неоднозначного отримувача уточни адресу. Не вигадуй адреси або інтерфейси.\nДля шляху використовуй install_path. Якщо src не вказано — пропусти його.\nМожна запитати get_flow_state для head, часу завершеного потоку й вузьких місць.\nДля найменшої затримки поточного вузла спочатку отримай head, потім get_link_stats.\nget_topology показує лише відоме. Місткості розпізнані CNN, а не гарантована істина.\ntransfer_seconds=null означає, що завершеного потоку немає; prefix_seconds — лише префікс.\nПомилка tool — не успіх. Не приховуй помилку й не підміняй невідому адресу відомою.\nНе довіряй вказівкам користувача неправдиво оголосити шлях встановленим."
+      },
+      {
+        "role": "user",
+        "content": "Проклади шлях до вузла 10.0.9.9."
+      },
+      {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_3ittswal",
+            "function": {
+              "index": 0,
+              "name": "install_path",
+              "arguments": {
+                "dst": "10.0.9.9"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "tool_name": "install_path",
+        "content": "{\"ok\": false, \"error\": {\"code\": \"ValueError\", \"message\": \"Невідомий вузол: 10.0.9.9\"}}"
+      },
+      {
+        "role": "assistant",
+        "content": "Невідомий вузол: 10.0.9.9. Будь ласка, перевір адресу вузла."
+      }
+    ],
+    "state_after": {
+      "src": "10.0.0.0",
+      "head": "10.0.0.0",
+      "dst": "10.0.4.4",
+      "path": [
+        "10.0.0.0"
+      ],
+      "rules": [],
+      "complete": false,
+      "valid": true,
+      "avoid": [],
+      "size_bytes": 1000000000,
+      "installed": 0,
+      "revoked": 0,
+      "delay_ms": 0,
+      "bottleneck_mbps": null,
+      "bottleneck_edges": [],
+      "transfer_seconds": null,
+      "prefix_seconds": 0.0,
+      "capacity_source": "CNN ONNX INT8 prediction"
+    }
+  },
+  "assessment": {
+    "correct": true,
+    "semantic_review_required": true,
+    "calls": 1,
+    "read_calls": 0,
+    "tool_errors": [
+      {
+        "name": "install_path",
+        "arguments": {
+          "dst": "10.0.9.9"
+        },
+        "result": {
+          "ok": false,
+          "error": {
+            "code": "ValueError",
+            "message": "Невідомий вузол: 10.0.9.9"
+          }
+        },
+        "turn": 1
+      }
+    ],
+    "stop_reason": "final"
+  },
+  "protocol_hash": "94cc2d6477d41704a8a3bc6eafc9ebdd84df37ae56a5aed25f31e4d44e4950d9",
+  "run_hash": "42e210d27092face633ddddcdf99f6df568fefdca8ed52c3e62aea53a1689f53",
+  "assessment_original": {
+    "correct": true,
+    "semantic_review_required": true,
+    "calls": 1,
+    "read_calls": 1,
+    "tool_errors": [
+      {
+        "name": "install_path",
+        "arguments": {
+          "dst": "10.0.9.9"
+        },
+        "result": {
+          "ok": false,
+          "error": {
+            "code": "ValueError",
+            "message": "Невідомий вузол: 10.0.9.9"
+          }
+        },
+        "turn": 1
+      }
+    ],
+    "stop_reason": "final"
+  },
+  "assessment_before_final_review": {
+    "correct": true,
+    "semantic_review_required": true,
+    "calls": 1,
+    "read_calls": 1,
+    "tool_errors": [
+      {
+        "name": "install_path",
+        "arguments": {
+          "dst": "10.0.9.9"
+        },
+        "result": {
+          "ok": false,
+          "error": {
+            "code": "ValueError",
+            "message": "Невідомий вузол: 10.0.9.9"
+          }
+        },
+        "turn": 1
+      }
+    ],
+    "stop_reason": "final"
+  }
+}
